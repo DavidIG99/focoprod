@@ -1,0 +1,146 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+
+  <title>Contacto — ProdMind</title>
+  <meta name="description" content="Escríbenos para soporte, dudas o demos.">
+
+  <link rel="icon" href="images/logo.png?v=2" type="image/jpg" sizes="32x32">
+
+  <link rel="stylesheet" href="normalize.css">
+  <link rel="stylesheet" href="main.css">
+
+  <style>
+    .form-wrap{ max-width:720px; margin:0 auto; }
+    @media (max-width:640px){ .form-wrap{ padding:0 6px; } }
+
+    .field{ margin:10px 0 14px; }
+    .field label{ display:block; font-size:14px; color:var(--muted); margin-bottom:6px; }
+    .field input, .field textarea{
+      width:100%; padding:10px 12px; border-radius:10px;
+      border:1px solid var(--border); background:var(--surface); color:var(--ink);
+    }
+    .field textarea{ resize: vertical; }
+    .field input:focus, .field textarea:focus{
+      outline:3px solid color-mix(in oklab, var(--accent) 30%, white);
+      outline-offset: 1px;
+    }
+    .helper{ font-size:12px; color:var(--muted); margin-top:4px; }
+
+    .error{ font-size:12px; color:#b0423d; margin-top:6px; }
+    .invalid{ border-color:#d88a84 !important; outline:none !important; }
+
+    .btn--loading{ position:relative; pointer-events:none; }
+    .btn--loading::after{
+      content:""; position:absolute; right:10px; top:50%; transform:translateY(-50%);
+      width:16px; height:16px; border-radius:50%;
+      border:2px solid rgba(255,255,255,.6); border-top-color:#fff;
+      animation:spin .8s linear infinite;
+    }
+    @keyframes spin{ to{ transform:translateY(-50%) rotate(360deg); } }
+
+    .toast{
+      position:fixed; left:50%; bottom:24px; transform:translateX(-50%) translateY(8px);
+      background:var(--ink); color:#fff; padding:10px 14px; border-radius:12px;
+      opacity:0; transition:opacity .2s ease, transform .2s ease; z-index:9999;
+    }
+    .toast.show{ opacity:1; transform:translateX(-50%) translateY(0); }
+  </style>
+
+  <script src="includes.js" defer></script>
+</head>
+<body>
+  <div data-include="header.html"></div>
+
+  <main class="container" style="padding:28px 0">
+    <h1>Contacto</h1>
+
+    <section class="card form-wrap">
+      <form id="contactForm" novalidate>
+        <div class="field">
+          <label for="nombre">Nombre</label>
+          <input id="nombre" name="nombre" required autocomplete="name">
+        </div>
+
+        <div class="field">
+          <label for="email">Email</label>
+          <input id="email" type="email" name="email" required autocomplete="email" inputmode="email">
+          <div class="helper">Usa un correo válido</div>
+          <div class="error" id="eEmail" hidden>Revisa tu correo</div>
+        </div>
+
+        <div class="field">
+          <label for="mensaje">Mensaje</label>
+          <textarea id="mensaje" name="mensaje" rows="5" required minlength="10" maxlength="1000"></textarea>
+          <div class="helper">Mínimo 10 caracteres</div>
+          <div class="error" id="eMsg" hidden>Cuéntanos un poco más (mín. 10 caracteres)</div>
+        </div>
+
+        <!-- Honeypot anti-spam -->
+        <input type="text" name="empresa" style="position:absolute;left:-9999px" tabindex="-1" autocomplete="off" aria-hidden="true">
+
+        <button class="btn btn--accent" type="submit" id="sendBtn">Enviar</button>
+      </form>
+
+      <p style="margin-top:12px">
+        También puedes escribir a:
+        <a href="mailto:Prodmind2025@gmail.com">Prodmind2025@gmail.com</a>
+      </p>
+    </section>
+  </main>
+
+  <div data-include="footer.html"></div>
+
+  <script>
+    window.toast = window.toast || function(msg, ms = 2500){
+      const t = document.createElement('div');
+      t.className = 'toast'; t.textContent = msg; document.body.appendChild(t);
+      requestAnimationFrame(() => t.classList.add('show'));
+      setTimeout(() => { t.classList.remove('show'); setTimeout(()=>t.remove(), 300); }, ms);
+    };
+
+    const form   = document.getElementById('contactForm');
+    const btn    = document.getElementById('sendBtn');
+    const email  = document.getElementById('email');
+    const msg    = document.getElementById('mensaje');
+    const eEmail = document.getElementById('eEmail');
+    const eMsg   = document.getElementById('eMsg');
+
+    const validEmail = v => /.+@.+\..+/.test((v||'').trim());
+
+    form.addEventListener('submit', async (e)=>{
+      e.preventDefault();
+      const data = Object.fromEntries(new FormData(form).entries());
+      if (data.empresa) return; // bot
+
+      [email, msg].forEach(i => i.classList.remove('invalid'));
+      eEmail.hidden = true; eMsg.hidden = true;
+
+      let ok = true;
+      if(!validEmail(email.value)){ email.classList.add('invalid'); eEmail.hidden = false; ok = false; }
+      if((msg.value||'').trim().length < 10){ msg.classList.add('invalid'); eMsg.hidden = false; ok = false; }
+      if(!ok) return;
+
+      btn.disabled = true; btn.classList.add('btn--loading');
+      const orig = btn.textContent; btn.textContent = 'Enviando…';
+
+      try{
+        await new Promise(r => setTimeout(r, 900));
+        console.log('Contacto', data);
+
+        toast('¡Mensaje enviado! Pronto nos pondremos en contacto.');
+        form.reset();
+      }catch(err){
+        console.error(err);
+        toast('Ups, algo salió mal. Intenta de nuevo.', 2800);
+      }finally{
+        btn.disabled = false; btn.classList.remove('btn--loading'); btn.textContent = orig;
+      }
+    });
+
+    [email, msg].forEach(i => i.addEventListener('input', () => i.classList.remove('invalid')));
+  </script>
+</body>
+</html>

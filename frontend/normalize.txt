@@ -1,0 +1,108 @@
+/*
+El archivo normalize.css
+- Es una hoja de estilo CSS que normaliza el estilo predeterminado de los navegadores.
+- No es un “reset” total (como reset.css), sino que:
+- Arregla inconsistencias entre navegadores.
+- Preserva estilos útiles en lugar de borrarlos todos.
+- Hace que todos los elementos se rendericen de forma consistente.
+
+Es importante porque:
+
+Los navegadores aplican estilos por defecto: márgenes, paddings, tamaños de fuente, estilos de formularios, estilos de listas, etc.
+
+El problema: no todos los navegadores aplican los mismos estilos.
+Ejemplo clásico:
+	•	<h1> en Chrome puede tener margin-top: 20px, en Firefox margin-top: 21px.
+	•	<button> en Safari hereda un borde azul, en Chrome no.
+
+Sin normalize.css:
+	•	Tendrás errores visuales aleatorios en diferentes navegadores.
+	•	Harás hacks específicos → mala práctica.
+
+Su funcionamiento consiste en:
+
+normalize.css es un archivo grande, pero sigue una estructura clara:
+
+- Corrige elementos HTML básicos: html, body, main, h1–h6, p.
+- Corrige inline elements: a, strong, em, abbr.
+- Corrige form elements: button, input, textarea, select.
+- Normaliza listas, tablas, imágenes, SVG.
+- Asegura consistencia de atributos heredados.
+
+Veamos algunos bloques típicos de normalize.css (resumen comentado):
+*/
+
+/* 1. Use a consistent box-sizing */
+html {
+  line-height: 1.15; /* 1 */
+  -webkit-text-size-adjust: 100%; /* 2 */
+}
+
+/* 2. Remove default margin */
+body {
+  margin: 0;
+}
+
+/* 3. Render main consistently */
+main {
+  display: block;
+}
+
+/* 4. Correct h1 font size and margin */
+h1 {
+  font-size: 2em;
+  margin: 0.67em 0;
+}
+
+/* 5. Normalize lists */
+ul, ol {
+  padding: 0;
+}
+
+/* 6. Remove list styles */
+ul {
+  list-style: none;
+}
+
+/* 7. Normalize images */
+img {
+  border-style: none;
+}
+
+/* 8. Correct button overflow in IE */
+button {
+  overflow: visible;
+}
+
+/*
+line-height: 1.15 en html → mejora legibilidad en todos los browsers.
+- -webkit-text-size-adjust → evita que Safari/iOS cambien el tamaño de texto arbitrariamente.
+- body { margin: 0; } → elimina margen por defecto del <body>.
+- main { display: block; } → en navegadores viejos <main> no era block.
+- h1 → asegura tamaños de fuente coherentes.
+- ul, ol → quita paddings y bullets para empezar limpio.
+- img → elimina bordes alrededor de imágenes enlazadas.
+- button → corrige problemas de overflow en IE.
+
+Buenas prácticas
+
+- Siempre colócalo como primera hoja de estilo:
+
+<link rel="stylesheet" href="css/normalize.css">
+<link rel="stylesheet" href="css/main.css">
+
+Si actualizas normalize.css, revisa la versión oficial.
+
+Puedes personalizarlo:
+- Quita reglas que no uses.
+- Añade ajustes propios para navegadores modernos.
+
+Combínalo con un preprocesador (Sass, PostCSS) para integrarlo con tu stack.
+
+Recursos claves:
+
+- https://necolas.github.io/normalize.css/
+- https://developer.mozilla.org/es/docs/Web/CSS/box-sizing
+- https://developer.mozilla.org/es/docs/Web/CSS/box-sizing
+- https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_cascade/Cascade#user-agent_stylesheets
+*/

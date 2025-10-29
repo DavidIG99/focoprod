@@ -1,0 +1,963 @@
+
+<!doctype html>
+<html class="no-js" lang="es">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title></title>
+    <meta name="description" content="Prodmind">
+    
+    <meta name="robots" content="index, follow">
+
+    <meta name="keywords" content="diseño web, SEO, marketing digital, posicionamiento web">
+
+    <link rel="canonical" href="https://www.agenciacreativa.com/">
+
+    <meta property="og:title" content="Agencia Creativa Digital - Diseño Web Profesional">
+    <meta property="og:description" content="Diseñamos sitios web que venden. Optimización SEO, branding y marketing digital.">
+    <meta property="og:image" content="https://www.agenciacreativa.com/img/portada.jpg">
+    <meta property="og:url" content="https://www.agenciacreativa.com/">
+    <meta property="og:type" content="website">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Agencia Creativa Digital">
+    <meta name="twitter:description" content="Diseño web profesional y optimización SEO.">
+    <meta name="twitter:image" content="https://www.agenciacreativa.com/img/portada.jpg">
+
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+
+    <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "Agencia Creativa Digital",
+    "url": "https://www.agenciacreativa.com",
+    "logo": "https://www.agenciacreativa.com/img/logo.png",
+    "sameAs": [
+      "https://www.facebook.com/agenciacreativa",
+      "https://www.instagram.com/agenciacreativa"
+    ]
+  }
+  </script>
+    <link rel="manifest" href="site.webmanifest">
+    <link rel="apple-touch-icon" href="icono.png">
+
+    <!-- CSS base -->
+    <link rel="stylesheet" href="normalize.css">
+    <link rel="stylesheet" href="main.css">
+
+    <!-- Modernizr JS -->
+    <script src="js/vendor/modernizr-3.11.2.min.js"></script>
+  </head>
+  <body>
+    <header>
+    <h1 class="titulo-header"></h1>
+
+    <!-- JS principal -->
+    <script src="js/plugins.js"></script>
+    <script src="js/main.js"></script>
+    </header>
+  </body>
+</html>
+
+<!--
+--------------------------------------
+- Este es el archivo html inicial de todo proyecto web.
+
+- Cuando un navegador accede al dominio busca este archivo por defecto.
+
+- Define la estructura semántica, enlaces, recursos SEO basico y accesibilidad.
+--------------------------------------
+-->
+
+<!doctype html>
+
+<!--
+- Declara que usas html 5, no tiene cierre
+- Activa el modo estandar en todos los navegadores.
+- Es obligatorio y siempre va en la primnera linea
+
+Profundizar: https://developer.mozilla.org/es/docs/Glossary/Doctype
+-->
+
+<html class="no-js" lang="es">
+
+</html>
+
+<!--
+- envielve todo el documento.
+
+lang="es":
+- Declara el idioma principal en el que esta tu proyecto web. Para buscadores y lectores de pantalla (mejora, accesibilidad y SEO)
+
+Class="no-js":
+- se usa junto a Modernizr:
+- class="no-js" se usa junto a Modernizr:
+	•	Por defecto: no-js.
+	•	Si Modernizr detecta JS, reemplaza por js.
+	•	Te permite aplicar estilos condicionales si JS está activado o no.
+
+Profundizar: https://developer.mozilla.org/es/docs/Web/HTML/Reference/Global_attributes/lang
+-->
+
+ <head>
+
+ </head>
+
+ <!--
+ Contiene metadatos: no se renderizan directamente, pero definen comportamiento del navegador, SEO y dispositivos.
+ -->
+
+<meta charset="utf-8">
+
+ <!--
+- Define la codificación de caracteres.
+- utf-8 cubre casi todos los alfabetos → evita errores con tildes, ñ, emojis.
+ -->
+
+<title>Mi sitio web</title>
+
+<!--
+- Es el título de la pestaña.
+- Uno de los elementos más importantes para SEO.
+- Debe ser único por página, corto y claro.
+- Ejemplo: "Mi Empresa | Servicios Profesionales"
+-->
+
+<meta name="description" content="Descripción clara para buscadores">
+
+<!--
+Descripción breve para buscadores.
+Lo usa Google en los resultados si coincide.
+Máximo recomendado: 150-160 caracteres.
+-->
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!--
+- Fundamental para responsive design.
+- Configura cómo escalar la página en móviles:
+	•	width=device-width → iguala el ancho del viewport al ancho de la pantalla.
+	•	initial-scale=1 → nivel de zoom inicial.
+-->
+
+<link rel="manifest" href="site.webmanifest">
+
+<!--
+- Apunta a site.webmanifest para PWA (Progressive Web Apps).
+- Define cómo se instala tu web como app en el móvil.
+- Opcional, pero recomendable si quieres soporte offline.
+
+Profundizar: https://developer.mozilla.org/es/docs/Web/Progressive_web_apps/Manifest
+-->
+
+ <link rel="icon" href="favicon.ico">
+
+ <!--
+- Icono de la pestaña.
+- Puedes usar .ico, .png o .svg.
+ -->
+
+ <link rel="apple-touch-icon" href="icon.png">
+
+ <!--
+- Icono para dispositivos iOS.
+- Se muestra cuando guardan tu web como app en la pantalla de inicio.
+ -->
+
+<link rel="stylesheet" href="css/normalize.css">
+<link rel="stylesheet" href="css/main.css">
+
+<!--
+- Carga hojas de estilo:
+	1.	normalize.css → normaliza estilos entre navegadores.
+	2.	main.css → tus estilos personalizados.
+-->
+
+<script src="js/vendor/modernizr-3.11.2.min.js"></script>
+
+<!--
+- Carga Modernizr en el <head> porque debe ejecutar antes de renderizar el HTML.
+- Detecta compatibilidad de features (Flexbox, Grid, SVG…).
+-->
+
+<body>
+
+<h1></h1>
+<h2></h2>
+<h3></h3>
+<h4></h4>
+<h5></h5>
+<h6></h6>
+
+<!--
+Organizan jerárquicamente títulos y subtítulos.
+	•	<h1> es el título principal de una página o sección importante.
+	•	<h2> a <h6> son subsecciones descendentes.
+
+Regla clave:
+Usa un solo <h1> por página (buena práctica SEO).
+Los <h2> a <h6> deben seguir estructura lógica, no saltes niveles.
+-->
+
+<p></p>
+
+<!--
+Párrafo de texto.
+
+Diferencia clave:
+
+Bloque de texto normal.
+-->
+
+<span></span>
+
+<!--
+Contenedor en línea genérico.
+
+Diferencia clave:
+
+Útil para aplicar estilo o JS a una palabra o frase dentro de otro elemento.
+-->
+
+<strong></strong>
+
+<!--
+Texto con énfasis fuerte.
+
+Diferencia clave:
+
+Visualmente suele ser negrita, pero semánticamente significa importancia.
+-->
+
+<b></b>
+
+<!--
+Texto negrita sin significado semántico.
+
+Diferencia clave:
+
+Solo estilo visual.
+-->
+
+<em></em>
+
+<!--
+Texto enfatizado.
+
+Diferencia clave:
+
+Generalmente se muestra en cursiva.
+-->
+
+<i></i>
+
+<!--
+Texto en cursiva, sin semántica.
+
+Diferencia clave:
+
+Solo estilo visual (por ejemplo, nombres de obras, términos extranjeros).
+-->
+
+<small></small>
+
+<!--
+Texto en tamaño más pequeño.
+
+Diferencia clave:
+
+Usado para disclaimers, notas al pie.
+-->
+
+<abbr></abbr>
+
+<!--
+Abreviatura o acrónimo.
+
+Diferencia clave:
+
+Puede tener title con forma expandida.
+-->
+
+<code></code>
+
+<!--
+Texto de código fuente.
+
+Diferencia clave:
+
+Monoespaciado, usado para mostrar fragmentos de código.
+-->
+
+<pre></pre>
+
+<!--
+Texto preformateado.
+
+Diferencia clave:
+
+Respeta espacios y saltos de línea, se usa junto con <code>.
+-->
+
+<kbd></kbd>
+
+<!--
+Entrada del usuario (teclado).
+
+Diferencia clave:
+
+Monoespaciado, como Ctrl + C.
+-->
+
+<samp></samp>
+
+<!--
+Muestra salida de programa.
+
+Diferencia clave:
+
+Igual: monoespaciado.
+-->
+
+<var></var>
+
+<!--
+Representa una variable.
+
+Diferencia clave:
+
+Monoespaciado.
+-->
+
+<q></q>
+
+<!--
+Cita breve en línea.
+
+Diferencia clave:
+
+Muestra comillas automáticamente.
+-->
+
+<sup></sup>
+
+<!--
+Superíndice.
+
+Diferencia clave:
+
+Por ejemplo: m² (m<sup>2</sup>).
+-->
+
+<sub></sub>
+
+<!--
+Subíndice.
+
+Diferencia clave:
+
+H₂O (H<sub>2</sub>O).
+-->
+
+<del></del>
+
+<!--
+Texto eliminado.
+
+Diferencia clave:
+
+Se muestra tachado.
+-->
+
+<ins></ins>
+
+<!--
+Texto insertado.
+
+Diferencia clave:
+
+Subrayado, indica cambios.
+-->
+
+<time></time>
+
+<!--
+Representa una hora o fecha.
+
+Diferencia clave:
+
+Útil para máquinas, SEO y microdatos.
+-->
+
+<form></form>
+
+<!--
+Contenedor principal de formulario.
+-->
+
+<input>
+
+<!--
+Campo de entrada de datos: texto, número, correo, archivo, etc.
+-->
+
+<textarea></textarea>
+
+<!--
+Área de texto multilínea.
+-->
+
+<select></select>
+
+<!--
+Lista desplegable.
+-->
+
+<option></option>
+
+<!--
+Opción dentro de <select>.
+-->
+
+<optgroup></optgroup>
+
+<!--
+Agrupa opciones relacionadas en <select>.
+-->
+
+<label></label>
+
+<!--
+Etiqueta asociada a un campo. Mejora accesibilidad.
+-->
+
+<fieldset></fieldset>
+
+<!--
+Agrupa campos relacionados.
+-->
+
+<legend></legend>
+
+<!--
+Título del <fieldset>.
+-->
+
+<button></button>
+
+<!--
+Botón clickeable: enviar, reiniciar, acción JS.
+-->
+
+<output></output>
+
+<!--
+Muestra resultado de un cálculo.
+-->
+
+<datalist></datalist>
+
+<!--
+Muestra resultado de un cálculo.
+-->
+
+<table></table>
+
+<!--
+Crea tabla.
+-->
+
+<tr></tr>
+
+<!--
+Fila de tabla.
+-->
+
+<th></th>
+
+<!--
+Celda de encabezado (normalmente en negrita y centrada).
+-->
+
+<td></td>
+
+<!--
+Celda de datos.
+-->
+
+<thead></thead>
+
+<!--
+Agrupa <tr> de encabezado.
+-->
+
+<tbody></tbody>
+
+<!--
+Agrupa <tr> del cuerpo de tabla.
+-->
+
+<tfoot></tfoot>
+
+<!--
+Agrupa <tr> de pie de tabla.
+-->
+
+<caption></caption>
+
+<!--
+Título de tabla.
+-->
+
+<col>
+
+<!--
+Define columna para estilos.
+-->
+
+<colgroup></colgroup>
+
+<!--
+Agrupa columnas para estilos.
+-->
+
+<a></a>
+
+<!--
+Enlace hipertexto.
+-->
+
+<link>
+
+<!--
+Relaciona recursos externos (CSS, favicon, manifest).
+-->
+
+<style></style>
+
+<!--
+CSS en línea dentro de <head>.
+-->
+
+<base>
+
+<!--
+URL base para enlaces relativos.
+-->
+
+<noscript></noscript>
+
+<!--
+Contenido alternativo si JS está deshabilitado.
+-->
+
+<!--
+Para SEO y accesibilidad avanzada:
+- itemprop
+- itemscope
+- itemtype
+
+Se usan en HTML5 para marcar semántica especial con schema.org.
+-->
+<div></div>
+
+<!--
+Contenedor genérico SIN significado semántico. Útil para agrupar elementos y aplicar estilos o scripts.
+
+Diferencia clave:
+
+No describe contenido, solo agrupa. Usar cuando ninguna otra etiqueta aplica.
+-->
+
+<section></section>
+
+<!--
+Define secciones temáticas de contenido. Cada <section> debería tener un encabezado (<h2>, <h3>…).
+
+Diferencia clave:
+
+Es semántica: el contenido dentro tiene sentido como bloque separado dentro de un documento.
+-->
+
+<article></article>
+
+<!--
+Para contenido independiente y reutilizable: publicaciones, comentarios, noticias.
+
+Diferencia clave:
+
+Un <article> tiene sentido por sí solo, dentro o fuera del contexto de la página.
+-->
+
+<header></header>
+
+<!--
+Encabezado introductorio de una página, sección o artículo. Normalmente contiene <h1>, <nav>.
+
+Diferencia clave:
+
+Se puede usar dentro de <body>, <article>, <section>.
+-->
+
+<footer></footer>
+
+<!--
+Pie de página, sección o artículo. Incluye info de autoría, derechos, enlaces, contacto.
+
+Diferencia clave:
+
+Igual que <header>, puede repetirse para secciones o la página entera.
+-->
+
+<aside></aside>
+
+<!--
+Contenido relacionado pero no principal: barras laterales, info adicional, widgets, citas destacadas.
+
+Diferencia clave:
+
+Visualmente suele estar a un lado, pero su función es complementaria al contenido principal.
+-->
+
+<main></main>
+
+<!--
+Contenido principal único de la página. Solo debe haber uno por página.
+
+Diferencia clave:
+
+No se repite. Excluye <header>, <footer>, <aside>.
+-->
+
+<nav></nav>
+
+<!--
+Agrupa enlaces de navegación principal.
+
+Diferencia clave:
+
+Es semántico, solo para menús de navegación significativos (no para cualquier lista de enlaces).
+-->
+
+<figure></figure>
+
+<!--
+Contenedor de elementos gráficos (imágenes, diagramas, videos) con leyenda opcional.
+
+Diferencia clave:
+
+Se usa con <figcaption>.
+-->
+
+<figcaption></figcaption>
+
+<!--
+Proporciona una leyenda o descripción para <figure>.
+
+Diferencia clave:
+
+Debe estar dentro de <figure>.
+-->
+
+<mark></mark>
+
+<!--
+Resalta texto relevante (como un marcador amarillo).
+
+Diferencia clave:
+
+Útil para resultados de búsqueda, resaltar términos clave.
+-->
+
+<summary></summary>
+
+<!--
+Título resumido para <details>.
+
+Diferencia clave:
+
+Se usa para expandir/colapsar contenido adicional.
+-->
+
+<details></details>
+
+<!--
+Contenido que el usuario puede expandir/colapsar.
+
+Diferencia clave:
+
+<summary> es el botón que muestra u oculta el contenido dentro.
+-->
+
+<ul></ul>
+
+<!--
+Lista desordenada. Elementos sin orden específico.
+
+Diferencia clave:
+
+Marcadores tipo viñeta por defecto.
+-->
+
+<ol></ol>
+
+<!--
+Lista ordenada. Elementos numerados o con letras/romanos.
+
+Diferencia clave:
+
+Orden importante. Se puede personalizar start, type.
+-->
+
+<li></li>
+
+<!--
+Elemento individual dentro de <ul> o <ol>.
+
+Diferencia clave:
+
+Siempre se usa dentro de <ul> o <ol>.
+-->
+
+<dl></dl>
+
+<!--
+Lista de definición (términos y descripciones).
+
+Diferencia clave:
+
+Para pares término/definición.
+-->
+
+<dt></dt>
+
+<!--
+Término (definición).
+
+Diferencia clave:
+
+Solo dentro de <dl>.
+-->
+
+<dd></dd>
+
+<!--
+Descripción del término.
+
+Diferencia clave:
+
+Solo dentro de <dl>.
+-->
+
+<hr>
+
+<!--
+Línea horizontal. Indica una separación temática entre bloques de contenido.
+
+Diferencia clave:
+
+Visual y semántica: cambio de contexto o tema.
+-->
+
+<br>
+
+<!--
+Salto de línea. Se usa en texto poético, direcciones, formularios.
+
+Diferencia clave:
+
+No usar para separación de bloques.
+-->
+
+<address></address>
+
+<!--
+Define información de contacto (dirección, email, autor).
+
+Diferencia clave:
+
+Usar solo para datos de contacto.
+-->
+
+<blockquote></blockquote>
+
+<!--
+Cita larga de otro autor o recurso.
+
+Diferencia clave:
+
+Para citas extensas, con posible fuente <cite>.
+-->
+
+<cite></cite>
+
+<!--
+Nombre de obra, autor o fuente de cita.
+Diferencia clave:
+
+Normalmente dentro de <blockquote>.
+-->
+
+<img>
+
+<!--
+Muestra una imagen.
+
+Diferencia clave:
+
+Debe tener alt descriptivo.
+-->
+
+<video></video>
+
+<!--
+Muestra un video.
+
+Diferencia clave:
+
+Puede tener <source> para múltiples formatos.
+-->
+
+<audio></audio>
+
+<!--
+Reproduce audio.
+
+Diferencia clave:
+
+Igual que <video>, admite <source>.
+-->
+
+<iframe></iframe>
+
+<!--
+Inserta contenido externo (videos, mapas).
+
+Diferencia clave:
+
+Usar con cuidado por seguridad.
+-->
+
+<canvas></canvas>
+
+<!--
+Contenedor gráfico para dibujar con JS.
+
+Diferencia clave:
+
+Usar para gráficos dinámicos.
+-->
+
+<svg></svg>
+
+<!--
+Inserta gráficos vectoriales escalables.
+
+Diferencia clave:
+
+Mejor para iconos o formas editables.
+-->
+
+</body>
+
+<!--
+- Contiene todo el contenido visible de tu página.
+- Aquí agregas:
+	•	Encabezados: <h1>, <h2>, <h3>
+	•	Párrafos: <p>
+	•	Imágenes: <img>
+	•	Enlaces: <a>
+	•	Formularios, secciones, scripts.
+-->
+
+<script src="js/plugins.js"></script>
+
+<!--
+- Carga tus plugins JS (jQuery plugins, sliders, validadores).
+-->
+
+<script src="js/main.js"></script>
+
+<!--
+Carga tu código JS principal.
+	•	Buenas prácticas:
+	•	Cargar al final del <body> para no bloquear el render.
+	•	O usar async/defer en <head> si es necesario.
+    
+
+Buenas prácticas avanzadas
+
+- Usa HTML5 semántico: <header>, <nav>, <section>, <article>, <footer> para estructura clara y SEO.
+- Mantén un <h1> único por página.
+- Usa atributos alt en imágenes → accesibilidad.
+- Minimiza dependencias externas: solo carga lo necesario.
+- Valida tu HTML: https://validator.w3.org
+-->
+
+
+<!--
+Ejemplo:
+-->
+
+<body>
+  <header>
+    <h1>Blog de Desarrollo Web</h1>
+    <nav>
+      <ul>
+        <li><a href="/">Inicio</a></li>
+        <li><a href="/blog.html">Blog</a></li>
+        <li><a href="/contacto.html">Contacto</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <article>
+      <h2>Primer post</h2>
+      <p>Bienvenido a mi blog sobre desarrollo web moderno.</p>
+    </article>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 Mi Sitio</p>
+  </footer>
+</body>
+
+<!--
+Recursos clave:
+
+- https://developer.mozilla.org/es/docs/Learn_web_development/Core/Structuring_content/Structuring_documents
+- https://developer.mozilla.org/es/docs/Web/HTML
+- https://developers.google.com/search/docs/fundamentals/seo-starter-guide?hl=es-419
+-->
+
+cambios a tener en cuenta
+
+ <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>ProdMind Web</title>
+  <meta name="description" content="Conoce la app y regístrate. Descarga, contacto y detalles.">
+  <!-- 🟦 Favicon moderno (SVG principal) -->
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+
+  <!-- 🟩 PNG de respaldo (Android, PWA, fallback general) -->
+  <link rel="icon" type="image/png" sizes="192x192" href="/favicon-192.png">
+  <link rel="icon" type="image/png" sizes="512x512" href="/favicon-512.png">
+
+  <!-- 🍏 Icono para iOS (pantalla de inicio) -->
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+
+  <!-- 💻 Safari pinned tab (macOS) -->
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+  <!-- 🧩 Manifest (PWA, Android) -->
+  <link rel="manifest" href="/site.webmanifest">
+
+  <!-- 🎨 Colores de tema -->
+  <meta name="theme-color" content="#ffffff">
+
+  <!-- 🧱 Compatibilidad extra (opcional, para Windows o navegadores antiguos) -->
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="stylesheet" href="normalize.css">
+  <link rel="stylesheet" href="main.css">
+  <script src="includes.js" defer></script>

@@ -1,0 +1,252 @@
+/* =====================================
+   1. VARIABLES Y CONFIGURACIÓN GLOBAL
+===================================== */
+:root {
+  --color-primary: #0070f3;
+  --color-secondary: #ff4081;
+  --font-base: 'Inter', sans-serif;
+  --spacing-unit: 1rem;
+}
+
+/* =====================================
+   2. RESET COMPLEMENTARIO
+===================================== */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--font-base);
+  line-height: 1.6;
+  background: #fff;
+  color: #333;
+}
+
+/* =====================================
+   3. TIPOGRAFÍA
+===================================== */
+h1, h2, h3, h4, h5, h6 {
+  font-size: 30px;
+  margin: 0 0 0.5em;
+}
+
+p {
+  margin: 0 0 1em;
+}
+
+/* =====================================
+   4. LAYOUT
+===================================== */
+.container {
+  width: 90%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: var(--spacing-unit);
+}
+
+/* =====================================
+   5. COMPONENTES
+===================================== */
+.titulo-header {
+text-align: center;
+}
+.btn {
+  display: inline-block;
+  background: var(--color-primary);
+  color: #fff;
+  padding: 0.5em 1em;
+  border: none;
+  border-radius: 4px;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.btn:hover {
+  background: darken(var(--color-primary), 10%);
+}
+
+/* =====================================
+   6. UTILIDADES
+===================================== */
+.text-center {
+  text-align: center;
+}
+
+.mt-1 {
+  margin-top: 1rem;
+}
+
+/*
+Es tu hoja de estilos principal.
+
+- Contiene todo el diseño personalizado de tu proyecto:
+- Layout (estructuras de grid, flexbox, contenedores)
+- Tipografía (fuentes, tamaños)
+- Colores, paletas, variables CSS
+- Componentes reutilizables (botones, tarjetas, navbars)
+- Animaciones, transiciones
+- Utilidades (helpers, clases auxiliares)
+
+Porque tenerlo:
+
+- Mantiene separado tu normalizador (normalize.css) de tus estilos reales.
+- Organiza tus reglas en un solo archivo central, fácil de mantener.
+- Puedes escalarlo en carpetas o módulos cuando el proyecto crece.
+
+Estructura:
+
+- Mantiene separado tu normalizador (normalize.css) de tus estilos reales.
+- Organiza tus reglas en un solo archivo central, fácil de mantener.
+- Puedes escalarlo en carpetas o módulos cuando el proyecto crece.
+*/
+
+:root {
+  --color-primary: #0070f3;
+  --color-secondary: #ff4081;
+  --font-base: 'Inter', sans-serif;
+  --spacing-unit: 1rem;
+}
+
+/*
+VARIABLES (Custom Properties)
+
+Qué es: Variables CSS (:root) para definir colores, fuentes, espacios.
+
+Por qué usarlo:
+	•	Reutilizas valores fácilmente.
+	•	Escalas la paleta de diseño.
+	•	Cambias todo desde un solo lugar.
+
+- https://developer.mozilla.org/es/docs/Web/CSS/--*
+*/
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--font-base);
+  line-height: 1.6;
+  background: #fff;
+  color: #333;
+}
+
+/*
+RESET COMPLEMENTARIO
+
+Aunque normalize.css arregla inconsistencias, en main.css es común aplicar box-sizing universal:
+
+Beneficio:
+- Hace que width y height incluyan paddings/borders → layouts predecibles.
+- https://developer.mozilla.org/es/docs/Web/CSS/box-sizing
+*/
+
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 700;
+  margin: 0 0 0.5em;
+}
+
+p {
+  margin: 0 0 1em;
+}
+
+/*
+TIPOGRAFÍA
+
+Define reglas base:
+- Fuente global (body).
+- Encabezados (h1–h6).
+- Párrafos (p).
+
+Protip: Usa escalas tipográficas (rem, em).
+*/
+
+
+/*
+LAYOUT
+
+Clases .container, .row, .col si usas un grid simple.
+
+Para layouts pro, usa Flexbox o CSS Grid.
+*/
+
+.btn {
+  display: inline-block;
+  background: var(--color-primary);
+  color: #fff;
+  padding: 0.5em 1em;
+  border: none;
+  border-radius: 4px;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.btn:hover {
+  background: darken(var(--color-primary), 10%);
+}
+
+/*
+COMPONENTES
+
+Define UI Blocks reutilizables:
+- Botones .btn
+- Tarjetas .card
+- Barra de navegación .navbar
+
+Para un enfoque robusto:
+- Sigue BEM (Block Element Modifier): .btn--primary, .btn--secondary.
+https://getbem.com
+*/
+
+.text-center {
+  text-align: center;
+}
+
+.mt-1 {
+  margin-top: 1rem;
+}
+
+/*
+Helpers rápidos:
+	•	.text-center
+	•	.mt-1, .mt-2 (márgenes)
+	•	.d-none (display: none)
+
+Inspirado en frameworks como Tailwind o Bootstrap.
+
+Patrones de organización pro
+
+✔️ Usa comentarios para separar bloques.
+✔️ Organiza main.css por orden lógico: reset → tipografía → layout → componentes → utilidades.
+✔️ Para proyectos grandes, divide en módulos y usa @import (o mejor aún, PostCSS/Sass).
+
+Ejemplo modular:
+
+/css/
+  ├── main.css
+  ├── _variables.css
+  ├── _typography.css
+  ├── _layout.css
+  ├── _components.css
+  ├── _utilities.css
+
+Buenas prácticas
+
+- Usa rem/em para tamaños → escalabilidad responsive.
+- Usa clases claras y semánticas → evita .box1, .red-button (sin contexto).
+- Minifica main.css en producción (main.min.css).
+- Versiona tu CSS en un control de versiones (Git).
+
+Recursos clave:
+- https://developer.mozilla.org/es/docs/Learn_web_development/Getting_started/Your_first_website/Styling_the_content
+- https://developer.mozilla.org/es/docs/Web/CSS/--*
+- https://en.bem.info/methodology/naming-convention/
+- https://css-tricks.com/snippets/css/a-guide-to-flexbox/
+- https://css-tricks.com/snippets/css/complete-guide-grid/
+*/
