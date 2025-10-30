@@ -1,0 +1,113 @@
+server:
+  port: 8083
+  # Configura el puerto donde tu backend levantará.
+  # Por defecto Spring Boot usa 8080, aquí se cambia a 8083.
+  # Docs:
+  # https://docs.spring.io/spring-boot/docs/current/reference/htmlsingle/#features.server.port
+
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5433/focoprod
+    # URL de conexión a PostgreSQL (host + puerto + base de datos).
+    # Más info JDBC:
+    # https://jdbc.postgresql.org/documentation/
+
+    username: focoprod
+    password: focoprod
+    # Usuario y contraseña de la base de datos.
+
+    driver-class-name: org.postgresql.Driver
+    # Driver JDBC necesario para la conexión a PostgreSQL.
+    # Docs:
+    # https://jdbc.postgresql.org/documentation/use/
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+      # Opciones:
+      # - create → Crea las tablas en cada arranque (borra todo)
+      # - create-drop → Como create, pero borra al parar
+      # - update → Actualiza el schema sin borrar datos
+      # - validate → Valida el schema
+      # Más info:
+      # https://docs.spring.io/spring-boot/docs/current/reference/htmlsingle/#howto.data-initialize
+
+    show-sql: true
+    # Muestra las consultas SQL en consola.
+
+    properties:
+      hibernate:
+        format_sql: true
+        # Imprime el SQL formateado (más legible).
+
+  sql:
+    init:
+      mode: always
+      # Ejecuta scripts SQL de inicialización si existen en /resources
+      # Docs:
+      # https://docs.spring.io/spring-boot/docs/current/reference/htmlsingle/#howto.data-initialization
+
+  security:
+    oauth2:
+      client:
+        registration:
+          # CONFIGURACIÓN DE CLIENTES OAUTH2 (Google, Apple, etc.)
+          # Docs oficiales:
+          # https://docs.spring.io/spring-security/reference/servlet/oauth2/login/index.html
+
+          #          apple:
+          #            client-id: com.tuempresa.prodmind.login
+          #            client-secret: <clave-generada-desde-Apple>
+          #            redirect-uri: http://localhost:8083/login/oauth2/code/apple
+          #            authorization-grant-type: authorization_code
+          #            scope: name email
+
+          google:
+            client-id: ${CLIENTEID_GOOGLE}
+            # ID de cliente generado en Google Cloud Console.
+            # Docs:
+            # https://developers.google.com/identity/protocols/oauth2
+
+            client-secret: ${SECRETOID_GOOGLE}
+            # SECRETO DEL CLIENTE de Google (debe mantenerse privado).
+
+            redirect-uri: http://localhost:8083/login/oauth2/code/google
+            # A dónde Google redirige después del login.
+            # Formato estándar si se desplegara en producción:
+            # {baseUrl}/login/oauth2/code/google
+
+            scope:
+              - openid
+              - profile
+              - email
+            # Scopes de Google:
+            # openid → necesario para usar OpenID Connect
+            # profile → nombre, foto
+            # email → email del usuario
+
+        provider:
+          #          apple:
+          #            authorization-uri: https://appleid.apple.com/auth/authorize
+          #            token-uri: https://appleid.apple.com/auth/token
+
+          google:
+            authorization-uri: https://accounts.google.com/o/oauth2/auth
+            # URL donde el usuario será enviado para iniciar sesión en Google.
+
+            token-uri: https://oauth2.googleapis.com/token
+            # Endpoint donde Google entrega el token de acceso + ID token.
+
+            user-info-uri: https://www.googleapis.com/oauth2/v3/userinfo
+            # Endpoint que devuelve los datos del usuario (email, nombre, sub…).
+
+            user-name-attribute: sub
+            # Atributo clave que identifica al usuario.
+            # En Google, "sub" es el ID único.
+
+logging:
+  level:
+    org.springframework: INFO
+    # Muestra logs generales de Spring.
+
+    org.hibernate.SQL: DEBUG
+    # Muestra logs SQL generados por Hibernate.

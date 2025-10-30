@@ -1,0 +1,97 @@
+services:
+  db:
+    image: postgres:17-alpine
+    # Imagen oficial de PostgreSQL versión 17, variante alpine (más liviana).
+    # Docs oficiales:
+    # https://hub.docker.com/_/postgres
+
+    container_name: focoprod_db
+
+    environment:
+      POSTGRES_USER: focoprod
+      POSTGRES_PASSWORD: focoprod
+      POSTGRES_DB: focoprod
+      # Variables de entorno que PostgreSQL usa para inicializar la base de datos.
+      # Docs:
+      # https://hub.docker.com/_/postgres#environment-variables
+
+    ports:
+      - "5433:5432"
+      # Mapea el puerto local 5433 al puerto interno 5432 del contenedor.
+      # Así tu PC usa 5433 y el contenedor usa el puerto default 5432.
+
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U focoprod"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+      # Healthcheck verifica si PostgreSQL ya está listo para aceptar conexiones.
+      # Docs:
+      # https://docs.docker.com/engine/reference/builder/#healthcheck
+
+    networks:
+      - focoprod_net
+
+    restart: unless-stopped
+    # Reinicia el contenedor automáticamente excepto si se detiene manualmente.
+
+
+  backend:
+    build:
+      context: /Users/davididarragagiraldo/Library/CloudStorage/OneDrive-Personal/Personal/Proyectos de software/focoprod/backend
+      # Ruta local donde está tu Dockerfile del backend.
+      # Docker construirá la imagen desde aquí.
+
+    container_name: focoprod_backend
+
+    depends_on:
+      db:
+        condition: service_healthy
+        # Espera a que PostgreSQL esté "sano" antes de iniciar el backend.
+        # Docs:
+        # https://docs.docker.com/compose/compose-file/deploy/#dependson
+
+    ports:
+      - "8082:8081"
+      # Tu backend interno escucha en 8081 y lo expones como 8082 en tu máquina.
+
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://db:5432/focoprod
+      SPRING_DATASOURCE_USERNAME: focoprod
+      SPRING_DATASOURCE_PASSWORD: focoprod
+      # Sobrescribe propiedades del application.yml.
+      # "db" es el nombre del contenedor → Docker DNS interno.
+      # Docs Spring env variables:
+      # https://docs.spring.io/spring-boot/docs/current/reference/htmlsingle/#features.external-config
+
+    networks:
+      - focoprod_net
+
+    restart: unless-stopped
+
+
+  adminer:
+    image: adminer:latest
+    # Adminer es una herramienta web ligera para administrar bases de datos.
+    # Alternativa simple a pgAdmin.
+    # Docs:
+    # https://hub.docker.com/_/adminer
+
+    container_name: focoprod_adminer
+
+    depends_on:
+      db:
+        condition: service_healthy
+
+    ports:
+      - "8080:8080"
+      # Adminer queda disponible en http://localhost:8080
+
+    networks:
+      - focoprod_net
+
+
+networks:
+  focoprod_net:
+    driver: bridge
+    # Red tipo "bridge", la más común para comunicación interna entre contenedores.

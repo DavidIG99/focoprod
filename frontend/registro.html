@@ -1,205 +1,67 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-
-  <title>Registro — ProdMind</title>
-  <meta name="description" content="Crea tu cuenta para usar la aplicación.">
-
-  <link rel="icon" href="images/logo.png?v=2" type="image/jpg" sizes="32x32">
-
-  <link rel="stylesheet" href="normalize.css">
-  <link rel="stylesheet" href="main.css">
-
-  <style>
-    .form-wrap{ max-width:720px; margin:0 auto; }
-    @media (max-width:640px){ .form-wrap{ padding:0 6px; } }
-
-    .field{ margin:10px 0 14px; }
-    .field label{ display:block; font-size:14px; color:var(--muted); margin-bottom:6px; }
-    .field input, .field textarea{
-      width:100%; padding:10px 12px; border-radius:10px;
-      border:1px solid var(--border); background:var(--surface); color:var(--ink);
-    }
-    .field input:focus, .field textarea:focus{
-      outline:3px solid color-mix(in oklab, var(--accent) 30%, white);
-      outline-offset: 1px;
-    }
-    .helper{ font-size:12px; color:var(--muted); margin-top:4px; }
-
-    .error{ font-size:12px; color:#b0423d; margin-top:6px; }
-    .invalid{ border-color:#d88a84 !important; outline:none !important; }
-
-    .btn--loading{ position:relative; pointer-events:none; }
-    .btn--loading::after{
-      content:""; position:absolute; right:10px; top:50%; transform:translateY(-50%);
-      width:16px; height:16px; border-radius:50%;
-      border:2px solid rgba(255,255,255,.6); border-top-color:#fff;
-      animation:spin .8s linear infinite;
-    }
-    @keyframes spin{ to{ transform:translateY(-50%) rotate(360deg); } }
-
-    .toast{
-      position:fixed; left:50%; bottom:24px; transform:translateX(-50%) translateY(8px);
-      background:var(--ink); color:#fff; padding:10px 14px; border-radius:12px;
-      opacity:0; transition:opacity .2s ease, transform .2s ease; z-index:9999;
-    }
-    .toast.show{ opacity:1; transform:translateX(-50%) translateY(0); }
-  </style>
-
-  <script src="includes.js" defer></script>
+  <meta charset="UTF-8" />
+  <!-- meta viewport asegura que la página sea responsive en móviles -->
+  <!-- Docs: https://developer.mozilla.org/en-US/docs/Web/HTML/Viewport_meta_tag -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Registro</title>
 </head>
 <body>
-  <div data-include="header.html"></div>
+  <h1>Registro</h1>
 
-  <main class="container" style="padding:28px 0">
-    <h1>Crear cuenta</h1>
+  <form id="registroForm">
+    <!-- Campos del formulario, cada uno con "required" -->
+    <!-- Más info: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input -->
+    <input type="text" id="name" placeholder="Name" required />
+    <input type="email" id="email" placeholder="Email" required />
+    <input type="password" id="password" placeholder="Contraseña" required />
+    <button type="submit">Registrarse</button>
+  </form>
 
-    <form class="card form-wrap" id="form-registro" novalidate>
-      <div class="field">
-        <label for="nombre">Nombre</label>
-        <input id="nombre" name="nombre" autocomplete="name" required />
-        <div class="error" data-error-for="nombre" hidden>Ingresa tu nombre.</div>
-      </div>
+  <hr>
 
-      <div class="field">
-        <label for="cedula">Cédula</label>
-        <input id="cedula" name="cedula" inputmode="numeric" pattern="[0-9A-Za-z.-]{5,}" required />
-        <div class="helper">Solo números y/o guiones/puntos. Mínimo 5 caracteres.</div>
-        <div class="error" data-error-for="cedula" hidden>Revisa tu cédula.</div>
-      </div>
+  <!-- Botón que redirige al usuario al endpoint OAuth2/Google -->
+  <!-- Este endpoint lo maneja Spring Security automáticamente -->
+  <!-- Docs: https://docs.spring.io/spring-security/reference/servlet/oauth2/login/redirect.html -->
+  <button onclick="window.location.href='http://localhost:8083/oauth2/authorization/google'">
+    Registrarse con Google
+  </button>
 
-      <div class="field">
-        <label for="email">Correo</label>
-        <input id="email" type="email" name="email" autocomplete="email" inputmode="email" required />
-        <div class="helper">Usa un correo válido (ej. nombre@dominio.com)</div>
-        <div class="error" data-error-for="email" hidden>Revisa tu correo.</div>
-      </div>
-
-      <div class="field">
-        <label for="celular">Celular</label>
-        <input id="celular" name="celular" inputmode="tel" pattern="[0-9+()\\-\\s]{7,}" required />
-        <div class="helper">Mínimo 7 dígitos. Se permiten +, (), - y espacios.</div>
-        <div class="error" data-error-for="celular" hidden>Revisa tu número de celular.</div>
-      </div>
-
-      <div class="field">
-        <label for="password">Contraseña</label>
-        <input id="password" type="password" name="password" minlength="8" autocomplete="new-password" required />
-        <div class="helper">Mínimo 8 caracteres.</div>
-        <div class="error" data-error-for="password" hidden>La contraseña debe tener al menos 8 caracteres.</div>
-      </div>
-
-      <label style="display:inline-flex;align-items:center;gap:8px;margin:6px 0 12px">
-        <input type="checkbox" name="tyc" id="tyc" required> Acepto los Términos
-      </label>
-      <div class="error" data-error-for="tyc" hidden>Debes aceptar los Términos.</div>
-
-      <button class="btn btn--accent" type="submit" id="submitBtn">Registrarme</button>
-    </form>
-
-    <p style="margin-top:12px">¿Ya tienes cuenta? <a href="descargar.html">Descarga la app</a></p>
-  </main>
-
-  <div data-include="footer.html"></div>
+  <!-- Equivalente para Apple (si se habilita más adelante) -->
+  <button onclick="window.location.href='http://localhost:8083/oauth2/authorization/apple'">
+    Registrarse con Apple
+  </button>
 
   <script>
-    // ---------- Toast ----------
-    window.toast = window.toast || function(msg, ms = 2500){
-      const t = document.createElement('div');
-      t.className = 'toast'; t.textContent = msg; document.body.appendChild(t);
-      requestAnimationFrame(() => t.classList.add('show'));
-      setTimeout(() => { t.classList.remove('show'); setTimeout(()=>t.remove(), 300); }, ms);
-    };
+    // Agregamos un listener al submit del formulario
+    // Más info: https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/addEventListener
+    document.getElementById("registroForm").addEventListener("submit", async (e) => {
+      e.preventDefault(); // Evita que el formulario recargue la página automáticamente
 
-    // ---------- Config ----------
-    const API_BASE = 'http://localhost:3001/api'; // cambia si tu backend corre en otro host/puerto
+      // Obtenemos los valores del formulario
+      const data = {
+        name: document.getElementById("name").value,
+        email: document.getElementById("email").value,
+        password: document.getElementById("password").value
+      };
 
-    // ---------- Helpers de validación ----------
-    const $form = document.getElementById('form-registro');
-    const $btn  = document.getElementById('submitBtn');
+      // Enviamos los datos al backend usando fetch() con POST y JSON
+      // Más info: https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch
+      const response = await fetch("http://localhost:8083/api/auth/register", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(data)
+      });
 
-    function setError(name, show, msg){
-      const input = $form.elements[name];
-      const box = $form.querySelector(`[data-error-for="${name}"]`);
-      if (!input || !box) return;
-      if (msg) box.textContent = msg;
-      box.hidden = !show;
-      input.classList.toggle('invalid', !!show);
-    }
+      // El backend responde con texto simple
+      const result = await response.text();
+      alert(result);
 
-    function validEmail(v){ return /.+@.+\..+/.test((v||'').trim()); }
-
-    function validate(){
-      let ok = true;
-      const fd = new FormData($form);
-      const v = Object.fromEntries(fd.entries());
-
-      setError('nombre', !v.nombre?.trim());
-      ok &&= !!v.nombre?.trim();
-
-      const cedOk = /^[0-9A-Za-z.\-]{5,}$/.test((v.cedula||'').trim());
-      setError('cedula', !cedOk); ok &&= cedOk;
-
-      const emOk = validEmail(v.email);
-      setError('email', !emOk); ok &&= emOk;
-
-      const celOk = /^[0-9+()\-\s]{7,}$/.test((v.celular||'').trim());
-      setError('celular', !celOk); ok &&= celOk;
-
-      const pwOk = (v.password||'').length >= 8;
-      setError('password', !pwOk); ok &&= pwOk;
-
-      const tycOk = $form.elements['tyc'].checked;
-      setError('tyc', !tycOk); ok &&= tycOk;
-
-      return { ok, payload: v };
-    }
-
-    // limpiar errores al escribir
-    ['nombre','cedula','email','celular','password','tyc'].forEach(n => {
-      const el = $form.elements[n];
-      if (!el) return;
-      el.addEventListener('input', () => setError(n, false));
-      el.addEventListener('change', () => setError(n, false));
-    });
-
-    // ---------- Submit ----------
-    $form.addEventListener('submit', async (e)=>{
-      e.preventDefault();
-
-      const { ok, payload } = validate();
-      if(!ok) return;
-
-      $btn.disabled = true; $btn.classList.add('btn--loading');
-      const orig = $btn.textContent; $btn.textContent = 'Enviando…';
-
-      try{
-        const res = await fetch(`${API_BASE}/register`, {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({
-            nombre:  payload.nombre.trim(),
-            cedula:  payload.cedula.trim(),
-            email:   payload.email.trim(),
-            celular: payload.celular.trim(),
-            password: payload.password
-          })
-        });
-        const data = await res.json().catch(()=> ({}));
-
-        if(!res.ok){
-          // mensajes comunes del backend: 409 unicidad, 400 validación
-          throw new Error(data.error || 'No se pudo registrar. Intenta de nuevo.');
-        }
-
-        toast('¡Registro exitoso!');
-        $form.reset();
-      }catch(err){
-        toast(err.message || 'Ups, algo salió mal.');
-      }finally{
-        $btn.disabled = false; $btn.classList.remove('btn--loading'); $btn.textContent = orig;
+      // Si contiene "correctamente", redirigimos al usuario
+      // success.html sería tu página de éxito
+      if (result.includes("correctamente")) {
+        window.location.href = "success.html";
       }
     });
   </script>
