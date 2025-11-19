@@ -21,7 +21,7 @@ import org.springframework.web.bind.annotation.*;
 
 // @CrossOrigin habilita CORS para permitir que un frontend externo acceda a este backend.
 // Docs oficiales: https://docs.spring.io/spring-framework/reference/web/webmvc/mvc-controller/ann-cors.html
-@CrossOrigin(origins = "http://localhost:5500") // o donde esté tu front
+@CrossOrigin(origins = "http://127.0.0.1:5500") // o donde esté tu front
 public class AuthController {
 
     // Inyección de dependencias: UsuarioService se recibe como dependencia obligatoria.
