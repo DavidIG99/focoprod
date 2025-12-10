@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>ProdMind Web</title>
+  <title>FocoProd Web</title>
   <meta name="description" content="Conoce la app y regístrate. Descarga, contacto y detalles.">
   <link rel="icon" href="images/logo.png?v=2" type="image/jpg" sizes="32x32">
 
@@ -15,29 +15,124 @@
 </head>
 <body>
 
-  <div data-include="header.html"></div>
+  <!-- Botón flotante para previsualizar en “modo móvil” -->
+  <button class="preview-toggle" type="button">Vista móvil</button>
 
-  <main>
-    <section class="container" style="padding:28px 0 12px">
-      <h1>ProdMind</h1>
-      <p class="lead">Tu plataforma para gestionar proyectos y conectarte con tu equipo desde web y móvil.</p>
-      <p>
-        <a class="btn btn--accent" href="registro.html">Crear cuenta</a>
-        <a class="btn" href="descargar.html">Descargar la app</a>
-        <a class="btn" href="contacto.html">Contacto</a>
-      </p>
-    </section>
+  <!-- Shell central que envuelve todo el contenido -->
+  <div class="shell">
+    <div class="shell-inner">
 
-    <section class="container card">
-      <h2>Beneficios clave</h2>
-      <ul>
-        <li>Organiza tareas y equipos</li>
-        <li>App móvil para iOS y Android</li>
-        <li>Soporte y acompañamiento</li>
-      </ul>
-    </section>
-  </main>
+      <!-- HEADER desde header.html -->
+      <div data-include="header.html"></div>
 
-  <div data-include="footer.html"></div>
+      <!-- CONTENIDO PRINCIPAL -->
+      <main class="main">
+
+        <!-- HERO MODERNO -->
+        <section class="hero container">
+          <div class="hero-grid">
+            <!-- Columna izquierda: texto -->
+            <div>
+              <div class="hero-eyebrow">PLATAFORMA · EQUIPOS · 2025</div>
+              <h1 class="hero-title">FocoProd</h1>
+              <p class="hero-subtitle">
+                Tu plataforma para gestionar proyectos y conectarte con tu equipo
+                desde web y móvil, con una interfaz mínima y clara.
+              </p>
+
+              <div class="hero-actions">
+                <a class="btn btn--primary" href="registro.html">Crear cuenta</a>
+                <a class="btn btn--ghost" href="descargar.html">Descargar la app</a>
+                <a class="btn btn--ghost" href="contacto.html">Contacto</a>
+              </div>
+
+              <p class="hero-note">
+                Diseñada para verse bien tanto en escritorio como en Android.
+              </p>
+
+              <div class="hero-chip-row">
+                <div class="hero-chip">Onboarding &lt; 5 minutos</div>
+                <div class="hero-chip">iOS y Android</div>
+              </div>
+            </div>
+
+            <!-- Columna derecha: “móvil” de ejemplo -->
+            <aside class="hero-phone">
+              <div class="hero-phone-outer">
+                <div class="hero-phone-inner">
+                  <div class="hero-phone-notch"></div>
+
+                  <div class="hero-phone-header">
+                    <div>
+                      <div class="hero-phone-label">HOY</div>
+                      <div class="hero-phone-project">Sprint del equipo</div>
+                    </div>
+                    <div class="hero-phone-badge">3 pendientes</div>
+                  </div>
+
+                  <ul class="hero-phone-list">
+                    <li class="hero-phone-item">
+                      <div class="hero-phone-item-primary">Revisión de tareas</div>
+                      <div class="hero-phone-item-meta">10:30</div>
+                    </li>
+                    <li class="hero-phone-item">
+                      <div class="hero-phone-item-primary">Entrega a cliente</div>
+                      <div class="hero-phone-item-meta">Hoy</div>
+                    </li>
+                    <li class="hero-phone-item">
+                      <div class="hero-phone-item-primary">Sync con el equipo</div>
+                      <div class="hero-phone-item-meta">16:00</div>
+                    </li>
+                  </ul>
+
+                  <div class="hero-phone-footer">
+                    <span>Vista rápida de tu día</span>
+                    <span>+ agregar tarea</span>
+                  </div>
+                </div>
+              </div>
+            </aside>
+          </div>
+        </section>
+
+        <!-- BENEFICIOS EN TARJETAS -->
+        <section id="beneficios" class="section section--tight container benefits">
+          <div class="benefits-header">
+            <h2 class="benefits-title">Beneficios clave</h2>
+            <span class="benefits-tag">Hecho para equipos modernos</span>
+          </div>
+
+          <div class="benefits-grid">
+            <article class="benefit-card">
+              <div class="benefit-label">Organización</div>
+              <div class="benefit-title">Todo en un solo lugar</div>
+              <p class="benefit-text">
+                Proyectos, tareas y responsables alineados en una sola vista. Tu productividad al 100%
+              </p>
+            </article>
+
+            <article class="benefit-card">
+              <div class="benefit-label">Movilidad</div>
+              <div class="benefit-title">Perfecto en Android y IOS</div>
+              <p class="benefit-text">
+                Interfaz limpia y táctil para trabajar cómodo desde el móvil.
+              </p>
+            </article>
+
+            <article class="benefit-card">
+              <div class="benefit-label">Acompañamiento</div>
+              <div class="benefit-title">Soporte y guía</div>
+              <p class="benefit-text">
+                Te ayudamos a implementar FocoProd en tu equipo paso a paso.
+              </p>
+            </article>
+          </div>
+        </section>
+      </main>
+
+      <!-- FOOTER desde footer.html -->
+      <div data-include="footer.html"></div>
+    </div>
+  </div>
 </body>
 </html>

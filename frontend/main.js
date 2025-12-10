@@ -193,3 +193,14 @@ document.addEventListener('DOMContentLoaded', async () => {
     attachContacto();
   }
 })();
+
+// --- Vista móvil / escritorio para la web --- //
+document.addEventListener("DOMContentLoaded", () => {
+  const toggle = document.querySelector(".preview-toggle");
+  if (!toggle) return;
+
+  toggle.addEventListener("click", () => {
+    const isMobile = document.body.classList.toggle("preview-mobile");
+    toggle.textContent = isMobile ? "Vista escritorio" : "Vista móvil";
+  });
+});

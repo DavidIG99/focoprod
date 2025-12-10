@@ -1,0 +1,59 @@
+/* cards.css */
+
+.benefits {
+  padding-top: 6px;
+}
+
+.benefits-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 14px;
+}
+
+.benefits-title {
+  font-size: 1.15rem;
+}
+
+.benefits-tag {
+  font-size: 0.82rem;
+  color: var(--text-soft);
+}
+
+/* grid de 3 tarjetas */
+.benefits-grid {
+  display: grid;
+  gap: 16px;
+}
+
+@media (min-width: 800px) {
+  .benefits-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+.benefit-card {
+  background: var(--bg-surface);
+  border-radius: var(--radius-md);
+  padding: 14px 14px 16px;
+  box-shadow: var(--shadow-subtle);
+  border: 1px solid rgba(228, 210, 192, 0.9);
+}
+
+.benefit-label {
+  font-size: 0.78rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--text-soft);
+  margin-bottom: 6px;
+}
+
+.benefit-title {
+  font-size: 0.98rem;
+  margin-bottom: 4px;
+}
+
+.benefit-text {
+  font-size: 0.86rem;
+  color: var(--text-muted);
+}

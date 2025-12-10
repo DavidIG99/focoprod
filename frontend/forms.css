@@ -1,0 +1,67 @@
+/* forms.css */
+
+.form-wrap {
+  margin-top: 20px;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.field label {
+  font-size: 0.85rem;
+  color: var(--color-muted);
+}
+
+.field input,
+.field textarea {
+  border-radius: 14px;
+  border: 1px solid var(--color-border);
+  padding: 10px 12px;
+  font-size: 0.95rem;
+  font-family: var(--font-sans);
+  background: #ffffff;
+  outline: none;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease,
+    background-color 0.15s ease;
+}
+
+.field input:focus,
+.field textarea:focus {
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 1px rgba(255, 122, 26, 0.2);
+}
+
+.field-help {
+  font-size: 0.8rem;
+  color: var(--color-muted);
+}
+
+/* Botones de login social */
+.oauth-buttons {
+  margin-top: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.oauth-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.oauth-btn__icon {
+  width: 20px;
+  height: 20px;
+  object-fit: contain;
+}
